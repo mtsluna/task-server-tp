@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const router = express();
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 router.listen(port, () => {
     console.log(`Server listen on port: ${port}`);
     router.use(express.json())
