@@ -1,0 +1,45 @@
+{
+  "name": "google-calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start-dev": "nodemon --trace-deprecation --watch '' --ext 'ts,json' --exec 'ts-node ./index.ts'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/uuid": "^8.3.0",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.13",
+    "mongoose-aggregate-paginate-v2": "^1.0.42",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "typescript-lru-cache": "^1.2.0",
+    "uuid": "^8.3.2",
+    "ts-node": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/lru-cache": "^5.1.0",
+    "@types/express": "4.17.6",
+    "@types/cors": "^2.8.10",
+    "@types/node": "^15.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "typescript": "^4.2.4"
+  }
+}
