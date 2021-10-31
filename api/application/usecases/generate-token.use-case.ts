@@ -48,6 +48,17 @@ export class GenerateTokenUseCase extends CachePersistence<TokenData>{
         }
     }
 
+    list = async () => {
+        return Array.from(await this.userPersistence.list()).map((value) => {
+            return {
+                _id: value["_id"],
+                username: value["username"],
+                name: value["name"],
+                created_at: value["created_at"]
+            };
+        })
+    }
+
     login = async (username: string, password: string) => {
 
         if (!await this.userPersistence.login(username, password)) {

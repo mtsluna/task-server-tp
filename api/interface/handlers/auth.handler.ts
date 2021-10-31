@@ -75,4 +75,9 @@ export class AuthHandler {
 
     }
 
+    list = async (req, res) => {
+        const data = await this.generateTokenUseCase.list();
+        res.status(200).send(data);
+    }
+
 }

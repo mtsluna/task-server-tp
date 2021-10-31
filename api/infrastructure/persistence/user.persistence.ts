@@ -32,6 +32,10 @@ export class UserPersistence extends MongoPersistence {
         return Utilities.transform<User>(result);
     }
 
+    list = async () => {
+        return this.UserModel.find();
+    }
+
     login = async (username: string, password: string) => {
         const response = await this.UserModel.findOne({
             username,
