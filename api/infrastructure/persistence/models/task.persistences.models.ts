@@ -8,6 +8,7 @@ export const TaskSchema = new Schema({
     observation: String,
     calendar_event: Boolean,
     event_id: String,
+    type: String,
     user_id: { type: String, index: true },
     deleted_at: { type: Date, index: true },
     updated_at: { type: Date, index: true }
