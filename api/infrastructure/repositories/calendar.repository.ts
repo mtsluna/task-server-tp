@@ -17,7 +17,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
         const privateKey = JSON.parse(file.toString()).private_key;
 
         return jwt.sign({
-            iss: "tareas@tasks-317123.iam.gserviceaccount.com",
+            iss: "api-calendar-sandez@api-calendar-sandez.iam.gserviceaccount.com",
             scope,
             aud: "https://oauth2.googleapis.com/token",
             iat: Math.floor(new Date().getTime() / 1000),
@@ -38,7 +38,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
                 assertion: await this.createOwnToken("https://www.googleapis.com/auth/calendar")
             };
 
-            const response = await axios.post(`${config.SERVICES.GOOGLE_API.OAUTH.BASE_PATH}/token`, qs.stringify(params), {
+            const response = await axios.post(`https://oauth2.googleapis.com/token`, qs.stringify(params), {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
@@ -57,7 +57,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
             const secondDate = new Date(task.due_date);
             secondDate.setHours(secondDate.getHours()+1);
 
-            const response = await axios.post(`${config.SERVICES.GOOGLE_API.BASE_PATH}/calendar/v3/calendars/${encodeURIComponent(config.SERVICES.GOOGLE_API.CALENDAR.CALENDAR_KEY)}/events`, {
+            const response = await axios.post(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent('d08lrtmdkhj9fesauc6mbkj1ik@group.calendar.google.com')}/events`, {
                 summary: task.title || "",
                 start: {
                     dateTime: task.due_date,
@@ -75,7 +75,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
                     "Accept": "application/json"
                 },
                 params: {
-                    key: config.SERVICES.GOOGLE_API.API_KEY
+                    key: 'AIzaSyC76lgW0NSsLtQeVZTd7PyzkzNnaDw31RQ'
                 }
             });
 
@@ -92,7 +92,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
             const secondDate = new Date(task.due_date);
             secondDate.setHours(secondDate.getHours()+1);
 
-            const response = await axios.patch(`${config.SERVICES.GOOGLE_API.BASE_PATH}/calendar/v3/calendars/${encodeURIComponent(config.SERVICES.GOOGLE_API.CALENDAR.CALENDAR_KEY)}/events/${task.event_id}`, {
+            const response = await axios.patch(`https://www.googleapis.com/calendar/v3/calendars/calendar/v3/calendars/${encodeURIComponent('d08lrtmdkhj9fesauc6mbkj1ik@group.calendar.google.com')}/events/${task.event_id}`, {
                 summary: task.title || "",
                 start: {
                     dateTime: task.due_date,
@@ -110,7 +110,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
                     "Accept": "application/json"
                 },
                 params: {
-                    key: config.SERVICES.GOOGLE_API.API_KEY
+                    key: 'AIzaSyC76lgW0NSsLtQeVZTd7PyzkzNnaDw31RQ'
                 }
             });
 
@@ -124,14 +124,14 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
 
     deleteEvent = async (eventId: string) => {
         try {
-            const response = await axios.delete(`${config.SERVICES.GOOGLE_API.BASE_PATH}/calendar/v3/calendars/${encodeURIComponent(config.SERVICES.GOOGLE_API.CALENDAR.CALENDAR_KEY)}/events/${eventId}`, {
+            const response = await axios.delete(`https://www.googleapis.com/calendar/v3/calendars/calendar/v3/calendars/calendar/v3/calendars/${encodeURIComponent('d08lrtmdkhj9fesauc6mbkj1ik@group.calendar.google.com')}/events/${eventId}`, {
                 headers: {
                     "Authorization": `Bearer ${(await this.getGoogleToken()).access_token}`,
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
                 params: {
-                    key: config.SERVICES.GOOGLE_API.API_KEY
+                    key: 'AIzaSyC76lgW0NSsLtQeVZTd7PyzkzNnaDw31RQ'
                 }
             });
 

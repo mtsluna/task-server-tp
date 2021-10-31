@@ -5,7 +5,7 @@ export class MongoPersistence {
     protected instance;
 
     constructor() {
-        this.instance = mongoose.connect("mongodb+srv://admin:Rn6qKYOB25ZIljQa@cluster0.jkcqd.mongodb.net/taskManager", {
+        this.instance = mongoose.connect("mongodb+srv://mtsluna:OATUw4MYIPLoIC5L@cluster0.l90cv.mongodb.net/myFirstDatabase", {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

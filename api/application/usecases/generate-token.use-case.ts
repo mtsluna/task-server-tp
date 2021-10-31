@@ -82,7 +82,7 @@ export class GenerateTokenUseCase extends CachePersistence<TokenData>{
             id,
             iat: Math.floor(Date.now() / 1000),
             exp: Math.floor(Date.now() / 1000) + 3600
-        }, config.SECRET);
+        }, 'test');
     }
 
     private generateRefreshToken = (id: string) => {
@@ -90,7 +90,7 @@ export class GenerateTokenUseCase extends CachePersistence<TokenData>{
             id,
             iat: Math.floor(Date.now() / 1000),
             exp: Math.floor(Date.now() / 1000) + 14400
-        }, config.SECRET_REFRESH);
+        }, 'test refresh');
     }
 
 }
