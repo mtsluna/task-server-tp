@@ -92,7 +92,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
             const secondDate = new Date(task.due_date);
             secondDate.setHours(secondDate.getHours()+1);
 
-            const response = await axios.patch(`https://www.googleapis.com/calendar/v3/calendars/calendar/v3/calendars/${encodeURIComponent('d08lrtmdkhj9fesauc6mbkj1ik@group.calendar.google.com')}/events/${task.event_id}`, {
+            const response = await axios.patch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent('d08lrtmdkhj9fesauc6mbkj1ik@group.calendar.google.com')}/events/${task.event_id}`, {
                 summary: task.title || "",
                 start: {
                     dateTime: task.due_date,
@@ -124,7 +124,7 @@ export class CalendarRepository extends CachePersistence<GoogleToken>{
 
     deleteEvent = async (eventId: string) => {
         try {
-            const response = await axios.delete(`https://www.googleapis.com/calendar/v3/calendars/calendar/v3/calendars/calendar/v3/calendars/${encodeURIComponent('d08lrtmdkhj9fesauc6mbkj1ik@group.calendar.google.com')}/events/${eventId}`, {
+            const response = await axios.delete(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent('d08lrtmdkhj9fesauc6mbkj1ik@group.calendar.google.com')}/events/${eventId}`, {
                 headers: {
                     "Authorization": `Bearer ${(await this.getGoogleToken()).access_token}`,
                     "Content-Type": "application/json",
